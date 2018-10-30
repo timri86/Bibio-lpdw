@@ -1,0 +1,44 @@
+livre_emprunter:
+    path:     /{id}/emprunter
+    defaults: { _controller: "AppFrontBundle:Livre:emprunter" }
+    methods:  GET
+
+livre_mesemprunts:
+    path:     /mes-emprunts
+    defaults: { _controller: "AppFrontBundle:Livre:mesemprunts" }
+    methods:  GET
+
+livre_retour:
+    path:     /{id}/retour
+    defaults: { _controller: "AppFrontBundle:Livre:retour" }
+    methods:  GET
+
+liste_emprunt:
+    path:     /liste-emprunt
+    defaults: { _controller: "AppFrontBundle:Livre:listeemprunt" }
+    methods:  GET
+
+livre_index:
+    path:     /
+    defaults: { _controller: "AppFrontBundle:Livre:index" }
+    methods:  GET
+
+livre_show:
+    path:     /{id}/show
+    defaults: { _controller: "AppFrontBundle:Livre:show" }
+    methods:  GET
+
+livre_new:
+    path:     /new
+    defaults: { _controller: "AppFrontBundle:Livre:new" }
+    methods:  [GET, POST]
+
+livre_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AppFrontBundle:Livre:edit" }
+    methods:  [GET, POST]
+
+livre_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AppFrontBundle:Livre:delete" }
+    methods:  DELETE

@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="table-agile-info">
+        {% if is_granted('ROLE_ADMIN') == true %}
+        <div class="btn-group">
+            <a class="btn btn-primary btn-sm" href="{{ path('category_index') }}"><i class="fa fa-caret-square-o-left" aria-hidden="true"></i> Retour à la liste</a>
+            <a class="btn btn-success btn-sm" href="{{ path('category_edit', { 'id': category.id }) }}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Modifier</a>
+        </div><hr/>
+        {% endif %}
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Liste des Catégories
+            </div>
+            <div class="table-responsive">
+                <table class="table table-striped b-t b-light">
+                    <tbody>
+                        <tr>
+                            <th>Id</th>
+                            <td>{{ category.id }}</td>
+                        </tr>
+                        <tr>
+                            <th>Nom</th>
+                            <td>{{ category.nom }}</td>
+                        </tr>
+                        <tr>
+                            <th>Description</th>
+                            <td>{{ category.description }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                {{ form_start(delete_form) }}
+                <input class="btn btn-danger btn-sm" type="submit" value="Delete">
+                {{ form_end(delete_form) }}
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

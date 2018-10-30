@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="table-agile-info">
+        {% for message in app.session.flashbag.get('info') %}
+            <div class="alert alert-success" role="alert">
+                <strong>Information: </strong> {{ message }}.
+            </div>
+        {% endfor %}
+        {% if is_granted('ROLE_ADMIN') == true %}
+            <a class="btn btn-success" href="{{ path('livre_new') }}"><i class="fa fa-plus-square"></i> Ajouter un livre</a><hr/>
+        {% endif %}
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Liste des livres disponibles
+            </div>
+            <div class="table-responsive">
+                <table class="table table-striped b-t b-light">
+                    <thead>
+                        <tr>
+                            <th>Titre</th>
+                            <th>Auteur</th>
+                            <th>Page</th>
+                            <th>Exemplaire</th>
+                            <th>Réaliser une action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for livre in livres %}
+                            <tr>
+                                <td>{{ livre.titre }}</td>
+                                <td>{{ livre.auteur }}</td>
+                                <td>{{ livre.nbpage }}</td>
+                                <td>{{ livre.nbexemplaire }}</td>
+                                <td>
+                                    <div class="btn-group">
+                                    <a class="btn btn-default btn-sm" href="{{ path('livre_show', { 'id': livre.id }) }}"><i class="fa fa-eye"></i> </a>
+                                    {% if is_granted('ROLE_ADMIN') == true %}
+                                        <a class="btn btn-primary btn-sm" href="{{ path('livre_edit', { 'id': livre.id }) }}"><i class="fa fa-pencil-square-o"></i> </a>
+                                    {% endif %}
+                                    <a class="btn btn-success btn-sm" href="{{ path('livre_emprunter', { 'id': livre.id }) }}"> <i class="fa fa-check-square-o" aria-hidden="true" title="Emprumter"></i> Emprunter</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}
