@@ -1,4 +1,4 @@
 bibio
 =====
 
-A Symfony project created on October 3, 2018, 4:38 pm.
+Projet de gestion d'une bibithèque créé dans le cadre de la licence pro développeur web
